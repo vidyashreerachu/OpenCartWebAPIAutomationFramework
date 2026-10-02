@@ -1,0 +1,16 @@
+[
+
+    {
+        "username": "abcd@hmail.com",
+        "password": "pwt3"
+    },
+    {
+        "username": " ",
+        "password": "pw123"
+    },
+    {
+        "username": "invalid@hmail.com",
+        "password": ""
+    }
+
+]

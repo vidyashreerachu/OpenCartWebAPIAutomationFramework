@@ -1,0 +1,85 @@
+import { Locator, Page } from "@playwright/test";
+
+export class BasePage
+{
+    protected readonly page: Page; // protected beacuse only child member can access it
+
+    //common locators across all pages
+    protected readonly logo: Locator;
+    protected readonly searchBox: Locator;
+    protected readonly searchIcon: Locator;
+    protected readonly currency: Locator;
+    protected readonly cartButton: Locator;
+    protected readonly footerLinks: Locator;
+
+
+    constructor (page: Page)
+    {
+        this.page = page;
+        this.logo = page.getByRole('img', { name: 'naveenopencart' });
+        this.searchBox = page.getByRole('textbox', { name: 'Search' });
+        this.searchIcon = page.locator('div#search button');
+        this.currency = page.locator('#form-currency');
+        this.cartButton = page.locator('div#cart button');
+        this.footerLinks = page.locator('footer a');
+    }
+
+
+    //App common methods: footer, logo, header, title etc
+
+    async isLogoVisible(): Promise<boolean>
+    {
+        return await this.logo.isVisible();
+    }
+
+    async isSearchBoxVisible(): Promise<boolean>
+    {
+        return await this.searchBox.isVisible();
+    }
+
+    async isCurrencyVisible(): Promise<boolean>
+    {
+        return await this.currency.isVisible();
+    }
+
+    async isCartButtonVisible(): Promise<boolean>
+    {
+        return await this.cartButton.isVisible();
+    }
+
+    async getPageFooters(): Promise<string[]>
+    {
+        return await this.footerLinks.allInnerTexts();
+    }
+
+    async getPageFootersCount(): Promise<number>
+    {
+        return await this.footerLinks.count();
+    }
+
+
+    //page level generic methods
+
+    async getPageTitle(): Promise<string>
+    {
+        return await this.page.title();
+    }
+
+    getPageCurrenURL(): string
+    {
+        return this.page.url();
+    }
+
+    async waitForPageLoad()
+    {
+        return await this.page.waitForLoadState('load');
+    }
+
+    async takeScreenshot(name: string)
+    {
+        return await this.page.screenshot({
+            fullPage: true,
+            path: `reports/screenshots/${name}-${Date.now()}.png`
+        })
+    }
+}
