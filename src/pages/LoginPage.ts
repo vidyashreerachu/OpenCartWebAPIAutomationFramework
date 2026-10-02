@@ -41,7 +41,7 @@ export class LoginPage extends BasePage
 
     async doLogin(emailId: string, password: string)
     {
-        console.log(`Credtials are: ${emailId} , ${password}`);
+        console.log(`App Credtials are: ${emailId} , ${password}`);
         await this.emailID.fill(emailId);
         await this.password.fill(password);
         await this.loginBtn.click();
