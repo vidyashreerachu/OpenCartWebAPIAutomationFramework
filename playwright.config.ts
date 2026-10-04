@@ -19,13 +19,26 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
+  // By defualt CI is always = TRUE. Retry count in CI = 2, in local = 0
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  // No of workers in CI = 2, in local = 50% of CPU core capacity
+  workers: process.env.CI ? 2 : undefined,
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 
+  reporter: process.env.CI
+  ?
   [
+    ['list'],
+    ['html', { outputFolder: "reports/html-report", open: "never" }],
+    ["allure-playwright", {
+      outputFolder: "allure-results",
+      suiteTitle: true,
+    }],
+    ['reporting-labs', reportingLabs],
+]
+:
+[
     ['list'],
     ['html', { outputFolder: "reports/html-report", open: "never" }],
     ["allure-playwright", {
@@ -39,7 +52,8 @@ use: {
     //baseURL: 'https://naveenautomationlabs.com/opencart/',
     baseURL: process.env.BASE_URL,
     trace: 'on-first-retry',
-    headless: true,
+    // Headless in CI = true, in local = false
+    headless: !process.env.CI ? false : true,
   },
 
   /* Configure projects for major browsers */
