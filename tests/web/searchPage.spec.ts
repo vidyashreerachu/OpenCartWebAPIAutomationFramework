@@ -5,10 +5,10 @@ import { CsvHelper } from '../../src/utils/CsvHelper';
 test.beforeEach(async ({ loginPage }) => 
 {
     await loginPage.goToLoginPage();
-    await loginPage.doLogin(process.env.QAUSERNAME!, process.env.PASSWORD!);
+    await loginPage.doLogin(process.env.APPUSERNAME!, process.env.PASSWORD!);
 });
 
-test('Verify search results count', async ({ homePage, page, searchResultsPage }) => 
+test('@smoke Verify search results count', async ({ homePage, page, searchResultsPage }) => 
 {
     await homePage.doSearch('macbook');
     expect (await page.title()).toContain('macbook');
@@ -35,7 +35,7 @@ const csvPath = path.join(
 let testData = CsvHelper.readCsv(csvPath);
 for(let row of testData)
 {
-    test(`Verify user is able to land on the product page - ${row.productName} `, async ({ homePage, searchResultsPage, page }) =>
+    test(`@regression Verify user is able to land on the product page - ${row.productName} `, async ({ homePage, searchResultsPage, page }) =>
     {
         await homePage.doSearch(row.searchKey);
         let prodCount = await searchResultsPage.getSearchResultsCount();

@@ -53,7 +53,7 @@ use: {
     baseURL: process.env.BASE_URL,
     trace: 'on-first-retry',
     // Headless in CI = true, in local = false
-    headless: !process.env.CI ? false : true,
+    headless: !process.env.CI ? true : true,
   },
 
   /* Configure projects for major browsers */

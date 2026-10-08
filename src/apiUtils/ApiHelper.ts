@@ -19,11 +19,12 @@ export class ApiHelper
             headers: headers
         });
 
-        console.log(await response.json(), response.status());
+        const body = await response.json();
+        console.log(body, response.status());
 
         return {
             status: response.status(),
-            body: await response.json()
+            body
         }
     }
 
@@ -35,11 +36,12 @@ export class ApiHelper
             data: data
         });
 
-        console.log(await response.json(), response.status());
+        const body = await response.json();
+        console.log(body, response.status());
 
         return {
             status: response.status(),
-            body: await response.json()
+            body
         }
     }
 
@@ -51,11 +53,12 @@ export class ApiHelper
             data: data
         });
 
-        console.log(await response.json(), response.status());
+        const body = await response.json();
+        console.log(body, response.status());
 
         return {
             status: response.status(),
-            body: await response.json()
+            body
         }
     }
 

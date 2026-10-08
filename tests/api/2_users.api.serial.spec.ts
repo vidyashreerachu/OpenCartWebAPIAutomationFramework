@@ -10,7 +10,7 @@ let userID: any;
 
 test.describe.serial('Running E2E go rest CRUD apis', () =>
 {
-    test('GET API - get all users', async ({ apiHelper }) =>
+    test('@smoke @regression GET API - get all users', async ({ apiHelper }) =>
     {
         let response = await apiHelper.get('/public/v2/users', AUTH_HEADER);
 
@@ -18,7 +18,7 @@ test.describe.serial('Running E2E go rest CRUD apis', () =>
         expect(response.body.length).toBeGreaterThan(0);
     });
 
-    test('POST API -- create a user', async ({ apiHelper }) =>
+    test('@regression POST API -- create a user', async ({ apiHelper }) =>
     {
         let userData = {
             name: 'Ananya Singh',
@@ -34,7 +34,7 @@ test.describe.serial('Running E2E go rest CRUD apis', () =>
         console.log('User ID: ', userID);
     });
 
-    test('PUT API -- update a user', async ({ apiHelper }) =>
+    test('@regression PUT API -- update a user', async ({ apiHelper }) =>
     {
         let updatedData = {
             name: 'Ananya Singh',
@@ -50,7 +50,7 @@ test.describe.serial('Running E2E go rest CRUD apis', () =>
         expect(response.body.status).toBe(updatedData.status);
     });
 
-    test('DELETE API -- delete a user', async ({ apiHelper }) =>
+    test('@regression DELETE API -- delete a user', async ({ apiHelper }) =>
     {
         let response = await apiHelper.delete(`/public/v2/users/${userID}`, AUTH_HEADER);
 

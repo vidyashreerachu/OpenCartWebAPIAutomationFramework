@@ -69,7 +69,7 @@ let userArraySchema = {
     "items": userSchema
 }
 
-test('Get a user - schema test', async ({ apiHelper }) =>
+test('@smoke Get a user - schema test', async ({ apiHelper }) =>
 {
     let userData =
     {

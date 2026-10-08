@@ -3,10 +3,10 @@ import { test, expect } from "../../src/fixtures/pageFixtures";
 test.beforeEach(async ({ loginPage }) => 
 {
     await loginPage.goToLoginPage();
-    await loginPage.doLogin(process.env.QAUSERNAME!, process.env.PASSWORD!);
+    await loginPage.doLogin(process.env.APPUSERNAME!, process.env.PASSWORD!);
 });
 
-test('Verify product header', async ({ homePage, searchResultsPage, productInfoPage}) =>
+test('@smoke Verify product header', async ({ homePage, searchResultsPage, productInfoPage}) =>
 {
     await homePage.doSearch('macbook');
     await searchResultsPage.selectProduct('MacBook Pro');
@@ -14,7 +14,7 @@ test('Verify product header', async ({ homePage, searchResultsPage, productInfoP
     expect (prodHeader).toBe('MacBook Pro');
 });
 
-test('Verify product images count', async ({ homePage, searchResultsPage, productInfoPage}) =>
+test('@regression Verify product images count', async ({ homePage, searchResultsPage, productInfoPage}) =>
 {
     await homePage.doSearch('macbook');
     await searchResultsPage.selectProduct('MacBook Pro');
@@ -23,7 +23,7 @@ test('Verify product images count', async ({ homePage, searchResultsPage, produc
     expect(imagesCount).toBe(4);
 });
 
-test('Verify user is able to add product to cart', async ({ homePage, searchResultsPage, productInfoPage, page}) =>
+test('@regression Verify user is able to add product to cart', async ({ homePage, searchResultsPage, productInfoPage, page}) =>
 {
     await homePage.doSearch('macbook');
     await searchResultsPage.selectProduct('MacBook Pro');
@@ -31,7 +31,7 @@ test('Verify user is able to add product to cart', async ({ homePage, searchResu
 });
 
 
-test('Verify product information/data', async({ homePage, searchResultsPage, productInfoPage }) =>
+test('@regression Verify product information/data', async({ homePage, searchResultsPage, productInfoPage }) =>
 {
     await homePage.doSearch('macbook');
     await searchResultsPage.selectProduct('MacBook Pro');

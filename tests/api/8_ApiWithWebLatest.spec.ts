@@ -32,20 +32,29 @@ test.beforeAll(async ({ request }) =>
 });
 
 
-async function goToWebPage(page: Page)
+async function loginToApplication(page: Page)
 {
     await page.goto('https://thinking-tester-contact-list.herokuapp.com/');
     await page.getByRole('textbox', { name: 'Email' }).fill(emailID);
     await page.getByPlaceholder('Password').fill('pw12345');
     await page.getByRole('button', { name: 'Submit' }).click();
-    return await page.locator('tr.contactTableBodyRow').count();
+    await page.waitForLoadState('networkidle');
 }
 
-test('Contact CRUD', async ({ request, page }) =>
+async function getContactRows(page: Page) 
+{
+    return page.locator('tr.contactTableBodyRow');
+}
+
+test('@regression Contact CRUD', async ({ request, page }) =>
 {
 
-    let countNum = await goToWebPage(page);
-    expect(countNum).toBe(0);
+    await loginToApplication(page);
+    let rows = getContactRows(page);
+    await expect.poll(async () => 
+        {
+            return (await rows).count();
+        }).toBe(0);
 
     let userData = 
     {
@@ -62,24 +71,32 @@ test('Contact CRUD', async ({ request, page }) =>
         "country": "USA"
     }
 
-    let postResponse = await request.post(process.env.Contact_URL!, {
+    let postResponse = await request.post(process.env.CONTACT_URL!, {
         headers: API_Headers,
         data: userData
         });
 
     expect(postResponse.status()).toBe(201);
-    //console.log(await postResponse.json());
     let jsonResponse = await postResponse.json();
     contactID = jsonResponse._id;
 
 
-    let getResponse = await request.get(`${process.env.Contact_URL!}/${contactID}`, {
+    let getResponse = await request.get(`${process.env.CONTACT_URL!}/${contactID}`, {
         headers: API_Headers
     });
     expect(getResponse.status()).toBe(200);
 
-    countNum = await goToWebPage(page);
-    expect(countNum).toBeGreaterThan(0);
+    // VERIFY CREATE THROUGH WEB
+    await page.reload();
+    await page.waitForLoadState('networkidle');
+    rows = getContactRows(page);
+
+    await expect.poll(async () => 
+    {
+        return (await rows).count();
+    }).toBeGreaterThan(0);
+
+    //-----------------------------------------------------------------------------------
 
     let updatedData = 
     {
@@ -96,7 +113,7 @@ test('Contact CRUD', async ({ request, page }) =>
         "country": "USA"
     }
 
-    let putResponse = await request.put(`${process.env.Contact_URL!}/${contactID}`, {
+    let putResponse = await request.put(`${process.env.CONTACT_URL!}/${contactID}`, {
         headers: API_Headers,
         data: updatedData
         });
@@ -106,13 +123,28 @@ test('Contact CRUD', async ({ request, page }) =>
     expect(jsonPutResponse.lastName).toBe(updatedData.lastName);
     expect(jsonPutResponse.phone).toBe(updatedData.phone);
 
+    // VERIFY UPDATE THROUGH WEB
+    await page.reload();
+    await page.waitForLoadState('networkidle');
 
-    let deleteResponse = await request.delete(`${process.env.Contact_URL!}/${contactID}`, {
+    await expect(page.getByText('james')).toBeVisible();
+    await expect(page.getByText('8005555566')).toBeVisible();
+
+
+    //-----------------------------------------------------------------------------------
+
+    let deleteResponse = await request.delete(`${process.env.CONTACT_URL!}/${contactID}`, {
         headers: API_Headers
     });
     expect(deleteResponse.status()).toBe(200);
 
-    countNum = await goToWebPage(page);
-    expect(countNum).toBe(0);
+    // VERIFY DELETE THROUGH WEB
+    await page.reload();
+    await page.waitForLoadState('networkidle');
+
+    await expect.poll(async () => 
+    {
+        return await page.locator('tr.contactTableBodyRow').count();
+    }).toBe(0);
 
 });

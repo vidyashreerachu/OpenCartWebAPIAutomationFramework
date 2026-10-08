@@ -57,7 +57,7 @@ test.beforeEach('POST - Generate the access token', async ({ request }) =>
 });
 
 
-test('GET albums data', async ({ request }) =>
+test('@regression GET albums data', async ({ request }) =>
 {
     let baseURL = 'https://api.spotify.com';
     let endPoint = '/v1/albums/4aawyAB9vmqN3uQ7FjRGTy';
@@ -74,5 +74,5 @@ test('GET albums data', async ({ request }) =>
     console.log(jsonBody.total_tracks);
     console.log(jsonBody.images.length);
     console.log(jsonBody.external_urls.spotify);
-
+    expect(jsonBody.images.length).toBe(3);
 });

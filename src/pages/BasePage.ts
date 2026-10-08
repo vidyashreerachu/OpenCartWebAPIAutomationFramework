@@ -29,31 +29,37 @@ export class BasePage
 
     async isLogoVisible(): Promise<boolean>
     {
+        await this.logo.waitFor({ state: 'visible' });
         return await this.logo.isVisible();
     }
 
     async isSearchBoxVisible(): Promise<boolean>
     {
+        await this.searchBox.waitFor({ state: 'visible' });
         return await this.searchBox.isVisible();
     }
 
     async isCurrencyVisible(): Promise<boolean>
     {
+        await this.currency.waitFor({ state: 'visible' });
         return await this.currency.isVisible();
     }
 
     async isCartButtonVisible(): Promise<boolean>
     {
-        return await this.cartButton.isVisible();
+        await this.cartButton.first().waitFor({ state: 'visible' });
+        return await this.cartButton.first().isVisible();
     }
 
     async getPageFooters(): Promise<string[]>
     {
+        await this.footerLinks.waitFor({ state: 'visible' });
         return await this.footerLinks.allInnerTexts();
     }
 
     async getPageFootersCount(): Promise<number>
     {
+        await this.footerLinks.first().waitFor({ state: 'visible' });
         return await this.footerLinks.count();
     }
 

@@ -6,17 +6,15 @@ test.beforeEach(async ({ loginPage }) =>
     await loginPage.gotoRegisterationPage();
 });
 
-test('Verify user is able to register successfully', async ({ registerPage, page }) =>
+test('@smoke Verify user is able to register successfully', async ({ registerPage, page }) =>
 {
     await registerPage.completeRegistration({
         fname: 'mark',
         lname: 'jackson',
-        email: 'mark.jac4@hotmail.com',
+        email: `mark.jag4${Date.now()}@hotmail.com`,
         phone: '897868781',
         password: 'pw123'
     });
 
     expect(await registerPage.verifySuccessMsg()).toBeTruthy();
-
-    await page.pause();
 });

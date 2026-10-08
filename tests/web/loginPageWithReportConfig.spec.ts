@@ -13,7 +13,7 @@ test.beforeEach(async ({ loginPage }) =>
 });
 
 
-test('Login to app - Allure Configuration', async ({ loginPage, homePage }) => 
+test('@regression Login to app - Allure Configuration', async ({ loginPage, homePage }) => 
 {
     await allure.suite("Login Tests");
     await allure.severity("Critical");
@@ -23,7 +23,7 @@ test('Login to app - Allure Configuration', async ({ loginPage, homePage }) =>
 
     await allure.step("Login with valid creds", async () => 
     {
-        await loginPage.doLogin(process.env.QAUSERNAME!, process.env.PASSWORD!);
+        await loginPage.doLogin(process.env.APPUSERNAME!, process.env.PASSWORD!);
     });
 
     await allure.step("Verify logout link is visible", async () => 
@@ -38,14 +38,14 @@ test('Login to app - Allure Configuration', async ({ loginPage, homePage }) =>
 });
 
 
-test('Login to app - Reporting Labs Configuration', async ({ loginPage, homePage }) => 
+test('@regression Login to app - Reporting Labs Configuration', async ({ loginPage, homePage }) => 
 {
     meta({priority: 'P2', severity: 'major', owner: 'Vidya', feature:'Login', epic: 'US123', story: 'Num123', issue: 'Bug123'});
     
     //Displays the test data in report used in the test
-    await testData({ username: process.env.QAUSERNAME!, password: process.env.PASSWORD! }, 'Login'); 
+    await testData({ username: process.env.APPUSERNAME!, password: process.env.PASSWORD! }, 'Login'); 
 
-    await loginPage.doLogin(process.env.QAUSERNAME!, process.env.PASSWORD!);
+    await loginPage.doLogin(process.env.APPUSERNAME!, process.env.PASSWORD!);
     let pageTitle = await loginPage.getPageTitle();
     console.log(pageTitle);
 

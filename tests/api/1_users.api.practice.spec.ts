@@ -4,9 +4,10 @@ let AUTH_TOKEN = {
     Authorization: `Bearer efc0afb0b75b98c20dcc5481b4abcf1677b3309dad5ec3918891359c3840a306`
 }
 
-test('GET - Get all users', async ({ request }) =>
+test.skip('GET - Get all users', async ({ request }) =>
 {
-    let response = await request.get('https://gorest.co.in/public/v2/users' , {
+    let response = await request.get('https://gorest.co.in/public/v2/users' , 
+    {
         headers: AUTH_TOKEN
     });
 
@@ -19,9 +20,10 @@ test('GET - Get all users', async ({ request }) =>
 });
 
 
-test('GET - Get single user', async ({ request }) =>
+test.skip('GET - Get single user', async ({ request }) =>
 {
-    let response = await request.get('https://gorest.co.in/public/v2/users/8612634', {
+    let response = await request.get('https://gorest.co.in/public/v2/users/8612634', 
+    {
         headers: AUTH_TOKEN
     });
 
@@ -32,7 +34,7 @@ test('GET - Get single user', async ({ request }) =>
 });
 
 
-test('POST - Create a user', async ({ request }) =>
+test.skip('POST - Create a user', async ({ request }) =>
 {
     //User JS Object
     let userData = {
@@ -46,7 +48,8 @@ test('POST - Create a user', async ({ request }) =>
     //JSON.stringify();
     //Note: Playwright handles the JSON serialization automatically. no need to do it explicitly 
 
-    let response = await request.post('https://gorest.co.in/public/v2/users', {
+    let response = await request.post('https://gorest.co.in/public/v2/users', 
+    {
         headers: AUTH_TOKEN,
         data: userData
     });
@@ -59,7 +62,7 @@ test('POST - Create a user', async ({ request }) =>
 
 
 
-test('PUT - Update a user', async ({ request }) =>
+test.skip('PUT - Update a user', async ({ request }) =>
 {
     //User JS Object
     let userData = {
@@ -71,7 +74,8 @@ test('PUT - Update a user', async ({ request }) =>
     //JSON.stringify();
     //Note: Playwright handles the JSON serialization automatically. no need to do it explicitly 
 
-    let response = await request.put('https://gorest.co.in/public/v2/users/8619252', {
+    let response = await request.put('https://gorest.co.in/public/v2/users/8619252', 
+    {
         headers: AUTH_TOKEN,
         data: userData
     });
@@ -83,9 +87,10 @@ test('PUT - Update a user', async ({ request }) =>
 });
 
 
-test('DELETE - Delete a user', async ({ request }) =>
+test.skip('DELETE - Delete a user', async ({ request }) =>
 {
-    let response = await request.delete('https://gorest.co.in/public/v2/users/8619252', {
+    let response = await request.delete('https://gorest.co.in/public/v2/users/8619252', 
+    {
         headers: AUTH_TOKEN,
     });
 

@@ -2,29 +2,29 @@ import { test, expect } from '../../src/fixtures/apiFixtures';
 
 let tokenID: string;
 
-let headers =
-{
-    'Content-Type': 'application/json'
-}
-
-test.beforeEach('Generate the token', async ({ apiHelper }) =>
+test.beforeEach('Generate the token', async ({ request }) =>
 {
     let creds = {
                 username : 'admin',
                 password : 'password123'
                 }
 
-    let response = await apiHelper.post('/auth', creds, headers);
+    let response = await request.post('https://restful-booker.herokuapp.com/auth', {
+        headers: {'Content-Type': 'application/json'},
+        data: creds
+    });
 
-    expect(response.status).toBe(200);
-    console.log(response.body);
-    tokenID = response.body.token;
+    expect(response.status()).toBe(200);
+    let jsonResponse = await response.json();
+    console.log('Auth API Response: ', jsonResponse);
+    tokenID = jsonResponse.token;
 
 });
 
 
-test('Booking CRUD with token', async ({ apiHelper }) =>
+test('@regression Booking CRUD with token', async ({ request, page }) =>
 {
+    //1. create a new booking: POST -- no token needed
     let userData = {
         "firstname" : "Jim",
         "lastname" : "Brown",
@@ -37,14 +37,17 @@ test('Booking CRUD with token', async ({ apiHelper }) =>
     "additionalneeds" : "Breakfast"
     };
 
-    let postResponse = await apiHelper.post('/booking', userData, headers);
+    let postResponse = await request.post('https://restful-booker.herokuapp.com/booking', {
+        headers: {'Content-Type': 'application/json'},
+        data: userData
+    });
 
-    expect(postResponse.status).toBe(200);
-    console.log(postResponse.body);
-    let bookingID = postResponse.body.bookingid;
+    expect(postResponse.status()).toBe(200);
+    let jsonPostResp = await postResponse.json();
+    let bookingID = jsonPostResp.bookingid;
 
 
-
+    //2. Update a booking by bookingID: needs token
     let updatedUserData = {
         "firstname" : "John",
         "lastname" : "Brown",
@@ -57,17 +60,21 @@ test('Booking CRUD with token', async ({ apiHelper }) =>
     "additionalneeds" : "Lunch"
     };
 
-    let putHeaders = {
-        Cookie: `token=${tokenID}`
-    };
+    let putResponse = await request.put(`https://restful-booker.herokuapp.com/booking/${bookingID}`, {
+        headers: { Cookie: `token=${tokenID}` },
+        data: updatedUserData
+    });
 
-    let putResponse = await apiHelper.put(`/booking/${bookingID}`, updatedUserData, putHeaders);
+    expect(putResponse.status()).toBe(200);
+    let jsonPutResp = await putResponse.json();
+    expect(jsonPutResp.additionalneeds).toBe(updatedUserData.additionalneeds);
+    expect(jsonPutResp.firstname).toBe(updatedUserData.firstname);
 
-    expect(putResponse.status).toBe(200);
-    expect(putResponse.body.additionalneeds).toBe(updatedUserData.additionalneeds);
-    expect(putResponse.body.firstname).toBe(updatedUserData.firstname);
 
+    //3. Delete a booking by bookingID: needs token
+    let deleteResponse = await request.delete(`https://restful-booker.herokuapp.com/booking/${bookingID}`, {
+        headers: { Cookie: `token=${tokenID}` }
+    });
 
-    let deleteResponse = await apiHelper.delete(`/booking/${bookingID}`, putHeaders);
-    expect(deleteResponse.status).toBe(201);
+    expect(deleteResponse.status()).toBe(201);
 });

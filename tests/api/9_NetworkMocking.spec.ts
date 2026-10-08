@@ -55,7 +55,7 @@ test('Intercept all network calls and log them', async ({ page }) =>
 
 //Intercept with mocking: mocking with fake data/response
 
-test('Network mocking with JSON data', async ({ page }) =>
+test('@smoke Network mocking with JSON data', async ({ page }) =>
 {
     let fakeProducts = 
     [
@@ -79,7 +79,7 @@ test('Network mocking with JSON data', async ({ page }) =>
 });
 
 
-test('Network mocking with HTML data', async ({ page }) =>
+test('@regression Network mocking with HTML data', async ({ page }) =>
 {
     let htmlData = 
             `
@@ -114,7 +114,7 @@ test('Network mocking with HTML data', async ({ page }) =>
 });
 
 
-test('Network mocking with 500 error', async ({ page }) =>
+test('@smoke Network mocking with 500 error', async ({ page }) =>
 {
     // https://naveenautomationlabs.com/opencart/index.php?route=product/search&search=macbook
     await page.route('**/index.php?route=product/search&search=macbook', async (route) =>
@@ -131,7 +131,7 @@ test('Network mocking with 500 error', async ({ page }) =>
 });
 
 
-test('Network mocking with 401 error', async ({ page }) =>
+test('@regression Network mocking with 401 error', async ({ page }) =>
 {
     await page.route('**/index.php?route=account/login', async (route) =>
     {
@@ -147,7 +147,7 @@ test('Network mocking with 401 error', async ({ page }) =>
 });
 
 
-test('Junk data', async ({ page }) =>
+test('@smoke Junk data', async ({ page }) =>
 {
 
     await page.route('**/index.php?route=common/home', async(route)=>
