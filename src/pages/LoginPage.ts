@@ -39,13 +39,12 @@ export class LoginPage extends BasePage
         await this.page.goto('index.php?route=account/login');
     }
 
-    async doLogin(emailId: string, password: string)
+    async doLogin(emailId: string, password: string): Promise<void>
     {
         console.log(`App Credtials are: ${emailId} , ${password}`);
         await this.emailID.fill(emailId);
         await this.password.fill(password);
         await this.loginBtn.click();
-        
     }
 
     async isForgottenPwdLinkExist(): Promise<boolean>
