@@ -1,0 +1,8 @@
+{
+  id: 1023,
+  name: 'apiautomation',
+  email: 'apiautomation_1791626014989@open.com',
+  gender: 'male',
+  status: 'active'
+} 201
+{ message: 'Resource not found' } 404

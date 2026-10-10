@@ -1,0 +1,72 @@
+[
+  {
+    id: 1001,
+    name: 'Aarav Sharma',
+    email: 'aarav.sharma@example.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 1002,
+    name: 'Priya Mehta',
+    email: 'priya.mehta@example.com',
+    gender: 'female',
+    status: 'active'
+  },
+  {
+    id: 1003,
+    name: 'Rohan Verma',
+    email: 'rohan.verma@example.com',
+    gender: 'male',
+    status: 'inactive'
+  },
+  {
+    id: 1004,
+    name: 'Sneha Iyer',
+    email: 'sneha.iyer@example.com',
+    gender: 'female',
+    status: 'active'
+  },
+  {
+    id: 1005,
+    name: 'Vikram Nair',
+    email: 'vikram.nair@example.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 1006,
+    name: 'Kavya Reddy',
+    email: 'kavya.reddy@example.com',
+    gender: 'female',
+    status: 'inactive'
+  },
+  {
+    id: 1007,
+    name: 'Arjun Patel',
+    email: 'arjun.patel@example.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 1008,
+    name: 'Nisha Gupta',
+    email: 'nisha.gupta@example.com',
+    gender: 'female',
+    status: 'active'
+  },
+  {
+    id: 1009,
+    name: 'Ravi Kumar',
+    email: 'ravi.kumar@example.com',
+    gender: 'male',
+    status: 'inactive'
+  },
+  {
+    id: 1010,
+    name: 'Ananya Singh',
+    email: 'ananya.singh@example.com',
+    gender: 'female',
+    status: 'active'
+  }
+] 200
