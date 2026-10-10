@@ -56,6 +56,8 @@ use: {
     trace: 'on-first-retry',
     // Headless in CI = true, in local = false
     headless: !process.env.CI ? true : true,
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
