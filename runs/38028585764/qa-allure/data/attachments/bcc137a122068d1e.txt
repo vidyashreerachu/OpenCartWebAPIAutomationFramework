@@ -1,0 +1,8 @@
+{
+  id: 1021,
+  name: 'Ananya Singh',
+  email: 'ananya.1791611246189@example.com',
+  gender: 'female',
+  status: 'active'
+} 201
+User ID:  1021

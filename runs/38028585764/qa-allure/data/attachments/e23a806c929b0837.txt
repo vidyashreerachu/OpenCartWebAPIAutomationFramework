@@ -1,0 +1,28 @@
+{
+  id: 1022,
+  name: 'Shashank Singh',
+  email: 'singh.1791611246377@example.com',
+  gender: 'male',
+  status: 'active'
+} 201
+{
+  id: 1022,
+  name: 'Shashank Singh',
+  email: 'singh.1791611246377@example.com',
+  gender: 'male',
+  status: 'active'
+} 200
+{
+  id: 1022,
+  name: 'Shashank Rajput',
+  email: 'rajput@example.com',
+  gender: 'male',
+  status: 'inactive'
+} 200
+{
+  id: 1022,
+  name: 'Shashank Rajput',
+  email: 'rajput@example.com',
+  gender: 'male',
+  status: 'inactive'
+} 200

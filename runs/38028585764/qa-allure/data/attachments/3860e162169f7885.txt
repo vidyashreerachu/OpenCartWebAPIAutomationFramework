@@ -1,0 +1,1 @@
+Auth API Response:  { token: '06fb010ac7964b8' }

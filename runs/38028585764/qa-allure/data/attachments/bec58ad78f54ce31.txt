@@ -1,0 +1,16 @@
+{
+  id: 1023,
+  name: 'Shashank Singh',
+  email: 'singh.1791611246558@example.com',
+  gender: 'male',
+  status: 'active'
+} 201
+{
+  id: 1023,
+  name: 'Shashank Singh',
+  email: 'singh.1791611246558@example.com',
+  gender: 'male',
+  status: 'active'
+} 200
+204
+{ message: 'Resource not found' } 404
