@@ -15,7 +15,7 @@ test('@smoke Home page title test', async ({ homePage }) =>
 
 test('@smoke Logout link exist test', async ({ homePage }) =>
 {
-    expect (homePage.isLogoutLinkExist).toBeTruthy();
+    expect (await homePage.isLogoutLinkExist()).toBeTruthy();
 });
 
 test('@regression Home page headers exist test', async ({ homePage }) =>
