@@ -33,22 +33,26 @@ test('@regression Home page headers exist test', async ({ homePage }) =>
 
 
 //common features test
-test('@smoke App logo exists on Login Page', async ({ basePage }) => 
+test('@smoke App logo exists on Login Page', async ({ basePage, page }) => 
 {
+    await page.waitForLoadState('load', {timeout: 4000});
     expect(await basePage.isLogoVisible()).toBeTruthy();
 });
 
-test('@smoke Search box exists on Login Page', async ({ basePage }) => 
+test('@smoke Search box exists on Login Page', async ({ basePage, page }) => 
 {
+    await page.waitForLoadState('load', {timeout: 4000});
     expect(await basePage.isSearchBoxVisible()).toBeTruthy();
 });
 
-test('@smoke Footer links count on Login Page', async ({ basePage }) => 
+test('@smoke Footer links count on Login Page', async ({ basePage, page }) => 
 {
+    await page.waitForLoadState('load', {timeout: 4000});
     expect(await basePage.getPageFootersCount()).toBe(16);
 });
 
-test('@smoke Cart button exists on Login Page', async ({ basePage }) =>
+test('@smoke Cart button exists on Login Page', async ({ basePage, page }) =>
 {
+    await page.waitForLoadState('load', {timeout: 4000});
     expect(await basePage.isCartButtonVisible()).toBeTruthy();
 });
