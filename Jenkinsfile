@@ -202,7 +202,7 @@ pipeline {
                         bat '''
                             set ENV=qa
                             set GRANT_TYPE=client_credentials
-                            npx playwright test --project=chromium --grep @regression
+                            npx playwright test --project=chromium --grep @smoke
                         '''
                     }
                 }
