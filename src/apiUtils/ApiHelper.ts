@@ -20,6 +20,7 @@ export class ApiHelper
         });
 
         const body = await response.json();
+        console.log('Request URL:', `${this.baseURL}${endPoint}`);
         console.log(body, response.status());
 
         return {
@@ -37,6 +38,7 @@ export class ApiHelper
         });
 
         const body = await response.json();
+        console.log('Request URL:', `${this.baseURL}${endPoint}`);
         console.log(body, response.status());
 
         return {
@@ -54,6 +56,7 @@ export class ApiHelper
         });
 
         const body = await response.json();
+        console.log('Request URL:', `${this.baseURL}${endPoint}`);
         console.log(body, response.status());
 
         return {
@@ -70,6 +73,7 @@ export class ApiHelper
         });
 
         console.log(response.status());
+        console.log('Request URL:', `${this.baseURL}${endPoint}`);
 
         return {
             status: response.status()
