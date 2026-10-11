@@ -83,7 +83,7 @@ pipeline {
                     git url: 'https://github.com/vidyashreerachu/OpenCartWebAPIAutomationFramework.git',
                         branch: 'master'
                     bat 'npm ci'
-                    bat 'npx playwright install --with-deps chromium'
+                    bat 'npx playwright install chromium'
                 }
             }
         }
