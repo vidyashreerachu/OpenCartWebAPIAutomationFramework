@@ -15,12 +15,12 @@ export class ApiHelper
 
     async get(endPoint: string, headers?: Record< string, string >)
     {
+        console.log('Request URL:', `${this.baseURL}${endPoint}`);
         let response = await this.request.get(`${this.baseURL}${endPoint}`, {
             headers: headers
         });
 
         const body = await response.json();
-        console.log('Request URL:', `${this.baseURL}${endPoint}`);
         console.log(body, response.status());
 
         return {
@@ -32,13 +32,13 @@ export class ApiHelper
 
     async post(endPoint: string, data: object, headers?: Record< string, string >)
     {
+        console.log('Request URL:', `${this.baseURL}${endPoint}`);
         let response = await this.request.post(`${this.baseURL}${endPoint}`, {
             headers: headers,
             data: data
         });
 
         const body = await response.json();
-        console.log('Request URL:', `${this.baseURL}${endPoint}`);
         console.log(body, response.status());
 
         return {
@@ -50,13 +50,13 @@ export class ApiHelper
 
     async put(endPoint: string, data: object, headers?: Record< string, string >)
     {
+        console.log('Request URL:', `${this.baseURL}${endPoint}`);
         let response = await this.request.put(`${this.baseURL}${endPoint}`, {
             headers: headers,
             data: data
         });
 
         const body = await response.json();
-        console.log('Request URL:', `${this.baseURL}${endPoint}`);
         console.log(body, response.status());
 
         return {
@@ -68,12 +68,12 @@ export class ApiHelper
 
     async delete(endPoint: string, headers?: Record< string, string >)
     {
+        console.log('Request URL:', `${this.baseURL}${endPoint}`);
         let response = await this.request.delete(`${this.baseURL}${endPoint}`, {
             headers: headers
         });
 
         console.log(response.status());
-        console.log('Request URL:', `${this.baseURL}${endPoint}`);
 
         return {
             status: response.status()
