@@ -81,7 +81,7 @@ pipeline {
                 echo "========================================="
                 dir('qa-tests') {
                     git url: 'https://github.com/vidyashreerachu/OpenCartWebAPIAutomationFramework.git',
-                        branch: 'main'
+                        branch: 'master'
                     bat 'npm ci'
                     bat 'npx playwright install --with-deps chromium'
                 }
