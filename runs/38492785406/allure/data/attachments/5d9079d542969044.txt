@@ -1,0 +1,10 @@
+Request URL: https://gorest.in/public/v2/users
+{
+  id: 1026,
+  name: 'apiautomation',
+  email: 'apiautomation_1791939310722@open.com',
+  gender: 'male',
+  status: 'active'
+} 201
+Request URL: https://gorest.in/public/v2/users/1026
+{ message: 'Resource not found' } 404

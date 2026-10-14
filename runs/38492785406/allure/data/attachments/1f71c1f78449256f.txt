@@ -1,0 +1,8 @@
+Request URL: https://gorest.in/public/v2/users/1022
+{
+  id: 1022,
+  name: 'Ananya Singh',
+  email: 'ananya.1791939309663@example.com',
+  gender: 'male',
+  status: 'inactive'
+} 200

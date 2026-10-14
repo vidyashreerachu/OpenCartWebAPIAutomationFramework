@@ -1,0 +1,20 @@
+Request URL: https://gorest.in/public/v2/users
+{
+  id: 1025,
+  name: 'Shashank Singh',
+  email: 'singh.1791939310108@example.com',
+  gender: 'male',
+  status: 'active'
+} 201
+Request URL: https://gorest.in/public/v2/users/1025
+{
+  id: 1025,
+  name: 'Shashank Singh',
+  email: 'singh.1791939310108@example.com',
+  gender: 'male',
+  status: 'active'
+} 200
+Request URL: https://gorest.in/public/v2/users/1025
+204
+Request URL: https://gorest.in/public/v2/users/1025
+{ message: 'Resource not found' } 404

@@ -1,0 +1,13 @@
+App Credtials are: david.williams662@test.com , Automation@123
+Search key:  macbook
+Product Name:  MacBook Pro
+Map(8) {
+  'Page header' => 'MacBook Pro',
+  'Images count' => 4,
+  'Brand' => 'Apple',
+  'Product Code' => 'Product 18',
+  'Reward Points' => '800',
+  'Availability' => 'Out Of Stock',
+  'prodPrice' => '$2,000.00',
+  'prodExTaxPrice' => '$2,000.00'
+}

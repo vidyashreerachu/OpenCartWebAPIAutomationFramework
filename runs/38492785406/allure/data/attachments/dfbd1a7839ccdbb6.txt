@@ -1,0 +1,32 @@
+Request URL: https://gorest.in/public/v2/users
+{
+  id: 1023,
+  name: 'Shashank Singh',
+  email: 'singh.1791939309567@example.com',
+  gender: 'male',
+  status: 'active'
+} 201
+Request URL: https://gorest.in/public/v2/users/1023
+{
+  id: 1023,
+  name: 'Shashank Singh',
+  email: 'singh.1791939309567@example.com',
+  gender: 'male',
+  status: 'active'
+} 200
+Request URL: https://gorest.in/public/v2/users/1023
+{
+  id: 1023,
+  name: 'Shashank Rajput',
+  email: 'rajput@example.com',
+  gender: 'male',
+  status: 'inactive'
+} 200
+Request URL: https://gorest.in/public/v2/users/1023
+{
+  id: 1023,
+  name: 'Shashank Rajput',
+  email: 'rajput@example.com',
+  gender: 'male',
+  status: 'inactive'
+} 200

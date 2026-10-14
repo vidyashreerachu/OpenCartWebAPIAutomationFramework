@@ -1,0 +1,16 @@
+Request URL: https://gorest.in/public/v2/users
+{
+  id: 1024,
+  name: 'apiautomation',
+  email: 'apiautomation_1791939310162@open.com',
+  gender: 'male',
+  status: 'active'
+} 201
+Request URL: https://gorest.in/public/v2/users/1024
+{
+  id: 1024,
+  name: 'apiautomation',
+  email: 'apiautomation_1791939310162@open.com',
+  gender: 'male',
+  status: 'active'
+} 200
